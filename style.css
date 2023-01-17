@@ -39,3 +39,20 @@
 #task-form{
     display: flex;
 }
+
+input,button{
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+#new-task{
+    flex: 1 1 0%;
+    background-color: var(--darker);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    color: var(--light);
+    font-size: 1.25rem;
+}
