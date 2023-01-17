@@ -5,16 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do-List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap'); </style><style> @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap'); </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="maincontainer">
-        <form action="">
+        <section class="to-do-main">
+            <h1>TO DO LIST</h1>
+            <form action="" id="task-form">
+                <div>
+                    <input type="text" id="new-task" placeholder="Add Your activities!">
+                </div>
+                <div>
+                    <button type="submit" id="submit">ADD TASK</button>
+                </div>
+            </form>
+        </section>
 
-            <div>
-                <button>EDIT</button>
-                <button>DELETE</button>
+        <section class="to-do-list">
+            <h2>Tasks</h2>
+
+            <div class="added-tasks">
+                <div class="content">
+                    <input type="text" class="text" value="buy shoe" readonly>
+                </div>
+                <div class="action">
+                    <button >EDIT</button>
+                    <button type="submit" id="submit">DELETE</button>
+                </div>
+
             </div>
-        </form>
+        </section>
     </div>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+:root{
+    --dark:#374151;
+    --darker: #222222;
+    --darkest:#111827;
+    --gray:#687280;
+    --light:#eee;
+    --pink:#ec4899;
+    --purple:#8b5cf6;
+
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-size: "Monserret";
+}
+
+.maincontainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--dark);
+    color: white;
+}
+.to-do-main{
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.to-do-main h1{
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+#task-form{
+    display: flex;
+}
