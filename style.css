@@ -47,7 +47,7 @@ input,button{
     background: none;
 }
 
-#new-task{
+#new_task{
     flex: 1 1 0%;
     background-color: var(--darker);
     padding: 1rem;
@@ -105,6 +105,10 @@ input,button{
     padding: 1rem;
     border-radius: 1rem;
     margin-bottom: 1rem;
+}
+
+#tasks .added-tasks .content{
+    flex: 1 1 0%;
 }
 
 #tasks .added-tasks .content .text{
