@@ -56,3 +56,99 @@ input,button{
     color: var(--light);
     font-size: 1.25rem;
 }
+
+::placeholder{
+    color: var(--gray);
+}
+
+#submit{
+    color: var(--pink);
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-image: linear-gradient(to right, pink,var(--light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#submit:hover{
+    opacity: 0.8;
+}
+
+#submit:active{
+    opacity: 0.6;
+}
+
+.task-list-section{
+    flex: 1 1 0%;
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width:100%;
+    margin: 0 auto;
+}
+
+.to-do-list{
+    /* padding:1rem; */
+}
+.to-do-list h2{
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+#tasks .added-tasks{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--darkest);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+#tasks .added-tasks .content .text{
+    color: var(--light);
+    font-size: 1.125rem;
+    width: 100%;
+    display: block;
+    transition: 0.4s;
+}
+
+#tasks .added-tasks .content .text:not(:read-only){
+    color: var(--pink);
+}
+
+#tasks .added-tasks .action{
+    display: flex;
+    margin:  0 -0.5rem;
+}
+
+.added-tasks .action button{
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin:  0 0.5rem;
+    text-transform: uppercase;
+    transition: 0.4s;
+}
+
+.added-tasks .action button:hover{
+    opacity: 0.8;
+}
+
+.added-tasks .action button:active{
+    opacity: 0.6;
+}
+
+
+.added-tasks .action .edit{
+    color: var(--purple);
+    background-image: linear-gradient(to right, pink,var(--light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.added-tasks .action .delete{
+    color:red;
+}

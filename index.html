@@ -20,20 +20,22 @@
             </form>
         </section>
 
-        <section class="to-do-list">
-            <h2>Tasks</h2>
-
-            <div class="added-tasks">
-                <div class="content">
-                    <input type="text" class="text" value="buy shoe" readonly>
+        <div class="task-list-section">
+            <section class="to-do-list">
+                <h2>Tasks</h2>
+                <div id="tasks">
+                    <div class="added-tasks">
+                        <div class="content">
+                            <input type="text" class="text" value="buy shoe" readonly>
+                        </div>
+                        <div class="action">
+                            <button class="edit">EDIT</button>
+                            <button class="delete">DELETE</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="action">
-                    <button >EDIT</button>
-                    <button type="submit" id="submit">DELETE</button>
-                </div>
-
-            </div>
-        </section>
+            </section> 
+        </div>
     </div>
     <script src="main.js"></script>
 </body>
