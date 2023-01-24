@@ -139,7 +139,6 @@ input,button,textarea{
     cursor: pointer;
     font-weight: 700;
     font-size: 1.125rem;
-    font-weight: 700;
     margin:  0 0.5rem;
     text-transform: uppercase;
     transition: 0.4s;
@@ -166,16 +165,22 @@ input,button,textarea{
 
 
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     #tasks .added-tasks .action{
         display: inline-grid;
+        
     }
 
     #task-form{
-        display: flow-root
+        display: grid
     }
     #submit{
         padding-top: 2rem;
+    }
+
+    .added-tasks .action button{
+        font-size: 1rem;
+        font-weight: 800;
     }
     
 }
