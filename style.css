@@ -133,6 +133,8 @@ input,button,textarea{
     margin:  0 -0.5rem;
 }
 
+
+
 .added-tasks .action button{
     cursor: pointer;
     font-weight: 700;
@@ -160,4 +162,14 @@ input,button,textarea{
 }
 .added-tasks .action .delete{
     color:red;
+}
+
+
+
+@media(max-width: 909px){
+    #tasks .added-tasks .action{
+        display: inline-grid;
+        margin:  0 -0.5rem;
+    }
+    
 }
