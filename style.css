@@ -120,7 +120,7 @@ input,button,textarea{
     transition: 0.4s;
     height: 150px;
     resize: none;
-    font-family:cursive;
+    font-family:'poppins'
 
 }
 
