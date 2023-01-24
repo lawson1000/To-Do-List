@@ -12,7 +12,7 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    font-size: "Monserret";
+    font-family: "Monserret";
 }
 
 .maincontainer{
@@ -120,6 +120,7 @@ input,button,textarea{
     transition: 0.4s;
     height: 150px;
     resize: none;
+    font-family:cursive;
 
 }
 
@@ -180,7 +181,15 @@ input,button,textarea{
 
     .added-tasks .action button{
         font-size: 1rem;
-        font-weight: 800;
+        /* font-weight: 700; */
+    }
+    #tasks .added-tasks .content .text{
+        font-size: 0.946rem;
+
     }
     
+    .to-do-main h1{
+        font-size: 35px;
+        text-align: center;
+    }
 }
