@@ -166,10 +166,16 @@ input,button,textarea{
 
 
 
-@media(max-width: 909px){
+@media(max-width: 400px){
     #tasks .added-tasks .action{
         display: inline-grid;
-        margin:  0 -0.5rem;
+    }
+
+    #task-form{
+        display: flow-root
+    }
+    #submit{
+        padding-top: 2rem;
     }
     
 }
