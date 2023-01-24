@@ -1,0 +1,123 @@
+:root{
+    --dark:#374151;
+    --darker: #222222;
+    --darkest:#111827;
+    --gray:#687280;
+    --light:#eee;
+    --pink:#ec4899;
+    --purple:#8b5cf6;
+
+}
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "monserret";
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--darkest);
+    height: 100vh;
+}
+.main{
+    background-color: var(--light);
+    width: 50%;
+    height: 50vh;  
+    display: grid;
+    align-items: center;
+    text-align: center;  
+    border-radius: 20px;
+    position: relative;
+}
+
+input,button{
+    appearance: none;
+    border: 1px solid black;
+    outline: none;
+    background: none;
+    /* height: 3rem; */
+    margin-top: 2rem;
+}
+.name_input{
+font-size: 1.1rem;
+padding: 0.7rem 0;
+text-align: center;
+border-radius: 20px;
+background: var(--darkest);
+width: 70%;
+color: var(--light);
+}
+
+
+::placeholder{
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+.name-form h1{
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    margin-bottom: -1.5rem;
+}
+
+
+.name-form{
+    padding: 0.7rem;
+}
+
+#submit{
+    background-color: var(--darkest);
+    color: white;
+    font-family: "monserret";
+    border-radius: 20px;
+    padding: 0.5rem 2rem;
+}
+#submit:hover{
+    background-color: var(--dark);
+    color: var(--light);
+    transition: 0.4s;
+}
+
+@media(max-width: 570px){
+    .name-form h1{
+        font-size: 1rem;
+        font-family: "monserret";
+        }
+               
+    .name_input{
+        font-size: 1rem;
+        padding: 0.5rem 0; 
+        text-align: center;
+        border-radius: 20px;
+        background: black;
+        }
+
+    ::placeholder{
+        font-size: 0.6rem;
+    }
+    
+    }
+
+    @media(max-width: 400px){
+        .name-form h1{
+            font-size: 0.6rem;
+            font-family: "Monserret";
+            }
+                   
+        .name_input{
+            font-size: 1rem;
+            padding: 0.5rem 0; 
+            text-align: center;
+            border-radius: 20px;
+            background: black;
+            }
+    
+        ::placeholder{
+            font-size: 0.6rem;
+        }
+        
+        }

@@ -7,6 +7,15 @@ window.addEventListener("load",() => {
     const taskForm = document.querySelector("#task-form");
     const newTask = document.querySelector("#new_task");
     const listTask = document.querySelector("#tasks");
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+    const userholder = document.querySelector("#new_task");
+
+    const finalname =username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
+
+    userholder.placeholder= "Hi! " + finalname + ", Please Add Your activities! "
+
+
 
     taskForm.addEventListener("submit",(e) =>{
         // prevent it from refreshing the page

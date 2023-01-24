@@ -60,6 +60,7 @@ input,button,textarea{
 
 ::placeholder{
     color: var(--gray);
+    text-align: center;
 }
 
 #submit{
@@ -190,6 +191,11 @@ input,button,textarea{
     
     .to-do-main h1{
         font-size: 35px;
+
+    }
+
+    ::placeholder{
+        font-size: 1rem;
         text-align: center;
     }
 }
