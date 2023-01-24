@@ -40,12 +40,13 @@
     display: flex;
 }
 
-input,button{
+input,button,textarea{
     appearance: none;
     border: none;
     outline: none;
     background: none;
 }
+
 
 #new_task{
     flex: 1 1 0%;
@@ -113,14 +114,18 @@ input,button{
 
 #tasks .added-tasks .content .text{
     color: var(--light);
-    font-size: 1.125rem;
+    font-size: 1.325rem;
     width: 100%;
     display: block;
     transition: 0.4s;
+    height: 150px;
+    resize: none;
+
 }
 
 #tasks .added-tasks .content .text:not(:read-only){
-    color: var(--pink);
+    color: black;
+    background: lightgray
 }
 
 #tasks .added-tasks .action{
