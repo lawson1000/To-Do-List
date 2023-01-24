@@ -34,6 +34,7 @@
     font-weight: 300;
     color: var(--gray);
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 #task-form{
