@@ -27,7 +27,7 @@ body{
 .main{
     background-color: var(--light);
     width: 70%;
-    height: 70vh;  
+    height: 60vh;  
     display: grid;
     align-items: center;
     text-align: center;  
@@ -37,7 +37,7 @@ body{
 
 input,button{
     appearance: none;
-    border: 1px solid black;
+    border: none;
     outline: none;
     background: none;
     /* height: 3rem; */
@@ -59,8 +59,8 @@ color: var(--light);
     font-size: 0.8rem;
 }
 .name-form h1{
-    padding: 0.7rem;
-    font-size: 0.9rem;
+    padding: 0.657rem;
+    font-size: 0.8rem;
     margin-bottom: -1.5rem;
 }
 
@@ -72,9 +72,11 @@ color: var(--light);
 #submit{
     background-color: var(--darkest);
     color: white;
+    font-size: 20px;
     font-family: "monserret";
     border-radius: 20px;
     padding: 0.5rem 2rem;
+    height: 50px;
 }
 #submit:hover{
     background-color: var(--dark);
