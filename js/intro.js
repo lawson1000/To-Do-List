@@ -17,6 +17,11 @@ window.addEventListener("load",(e)=>{
             e.preventDefault();
             return false;
         }
+        else if(nameValue.length < 3){
+            alert("Name must be 3 letters long")
+            e.preventDefault();
+            return false;
+        }
         else{
             console.log("Welcome")
         }
