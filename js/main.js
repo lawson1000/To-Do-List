@@ -2,11 +2,6 @@ window.addEventListener("load",() => {
 
     reload = JSON.parse(localStorage.getItem("reload")) || [];
 
-    // })
-
-    // const storeTask = document.getElementsByClassName("new_task")[0];
-    // const storeTaskSubmit = document.querySelector("#submit")[0];
-
     const taskForm = document.querySelector("#task-form");
     const newTask = document.querySelector("#new_task");
     const listTask = document.querySelector("#tasks");
@@ -22,148 +17,17 @@ window.addEventListener("load",() => {
     userholder.placeholder= "Hi! " + finalname + ", Please Add Your activities! "
 
 
-    // function display(){
-    //     let out='';
-    //     let taskShow = document.querySelector(".added-tasks")
-    //     let localItems = JSON.parse(localStorage.getItem('localItems'))
-    //     if(localItems === null){
-    //         taskList = []
-    //     }else{
-    //         taskList=localItems;
-    //     }
-    //     taskList.forEach(() => {
-    //         out += `
-    //         <div id="tasks">
-    //                 <div class="added-tasks">
-    //                     <div class="content">
-    //                         <textarea type="text" class="text" value="buy shoe" readonly></textarea>
-    //                     </div>
-    //                     <div class="action">
-    //                         <button class="edit">EDIT</button>
-    //                         <button class="delete">DELETE</button>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         `
-    
-    //     });
-    //     taskShow.innerHTML =out;
-    // }
-    // display()
-
     taskForm.addEventListener("submit",(e) =>{
         // prevent it from refreshing the page
         e.preventDefault();
         
-
         const taskValue = newTask.value;
-
-        const load ={
-            content: e.target.elements.content.value,
-            done:false,
-            createdAt:new Date().getTime()
-        }
-
-        reload.push(load);
-
-        localStorage.setItem("reload", JSON.stringify(reload))
-        e.target.reset();
-
-        display();
-
-
-        // if (storeTask.value.trim() != 0){
-        //     let localItems = JSON.parse(localStorage.getItem("localItem"))
-        //     if(localItems === null){
-        //         taskList =[]
-        //     }else{
-        //         taskList = localItems;
-        //     }
-        //     taskList.push(storeTask.value)
-        //     localStorage.setItem('localItem', JSON.stringify(taskList))
-        // }
-        // display(); 
-         
+ 
         if(!taskValue){
             alert("Field cannot be empty")
             return;
         }
         
-        // const task_add = document.createElement("div")
-        // task_add.classList.add("added-tasks")
-
-        // const task_content_add = document.createElement("div");
-        // task_content_add.classList.add("content");
-
-
-        // task_add.appendChild(task_content_add);
-
-        // const task_input =document.createElement("textarea")
-        // task_input.classList.add("text");
-        // task_input.type = "text";
-        // task_input.value = taskValue;
-        // task_input.setAttribute("readonly", "readonly");
-
-        // task_content_add.appendChild(task_input)
-
-        // const task_actions=document.createElement("div")
-        // task_actions.classList.add("action")
-
-        // const task_edit = document.createElement("button")
-        // task_edit.classList.add("edit")
-        // task_edit.innerHTML ="Edit";
-
-        // const task_delete = document.createElement("button")
-        // task_delete.classList.add("delete")
-        // task_delete.innerHTML ="Delete";
-        
-        // task_actions.appendChild(task_edit)
-        // task_actions.appendChild(task_delete)       
-
-        // task_add.appendChild(task_actions)
-
-        // listTask.appendChild(task_add);
-
-        // newTask.value = "";
-
-        task_edit.addEventListener('click',() => {
-            if(task_edit.innerText.toLowerCase() == "edit"){
-                task_input.removeAttribute("readonly");
-                task_input.focus();
-                task_edit.innerText ="Save";
-            }
-            else{
-                task_input.setAttribute("readonly","readonly")
-                task_edit.innerText ="Edit";
-            }
-        });
-
-        task_input.addEventListener('keypress',(event) =>{
-            click = event.key;
-            if(click === "Enter"){
-                task_input.setAttribute("readonly","readonly")
-                task_edit.innerText ="Edit";
-            }
-        });
-
-        
-        task_delete.addEventListener('click',() => {
-            listTask.removeChild(task_add);
-        })
-
-        // let myb = JSON.stringify(task_input.value);
-        // console.log(myb)
-        window.localStorage.setItem("taskForm", task_input.value)
-        // let nnm = JSON.parse(localStorage.getItem("taskForm"))
-        // console.log(nnm)
-    })
-
-})
-
-function display(){
-    const todo = document.querySelector("#tasks")
-    todo.innerHTML = "";
-    todo.forEach(todo => {
         const task_add = document.createElement("div")
         task_add.classList.add("added-tasks")
 
@@ -198,11 +62,33 @@ function display(){
         task_add.appendChild(task_actions)
 
         listTask.appendChild(task_add);
-        taskForm.addEventListener("submit",(e) =>{
-            display();
-            newTask.value = "";
-            localStorage.setItem("reload",JSON.stringify(reload))
+        
+        newTask.value = "";
+
+        task_edit.addEventListener('click',() => {
+            if(task_edit.innerText.toLowerCase() == "edit"){
+                task_input.removeAttribute("readonly");
+                task_input.focus();
+                task_edit.innerText ="Save";
+            }
+            else{
+                task_input.setAttribute("readonly","readonly")
+                task_edit.innerText ="Edit";
+            }
+        });
+
+        task_input.addEventListener('keypress',(event) =>{
+            click = event.key;
+            if(click === "Enter"){
+                task_input.setAttribute("readonly","readonly")
+                task_edit.innerText ="Edit";
+            }
+        });
+
+        
+        task_delete.addEventListener('click',() => {
+            listTask.removeChild(task_add);
         })
-      
+        
     })
-}
+})
