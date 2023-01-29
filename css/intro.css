@@ -25,7 +25,9 @@ body{
     height: 100vh;
 }
 .main{
-    background-color: var(--light);
+    /* background-color: var(--light); */
+    background: url(../background.jpg) no-repeat;
+    background-position: center;
     width: 70%;
     height: 60vh;  
     display: grid;
@@ -33,6 +35,12 @@ body{
     text-align: center;  
     border-radius: 20px;
     position: relative;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 input,button{
@@ -63,7 +71,6 @@ color: var(--light);
     font-size: 0.8rem;
     margin-bottom: -1.5rem;
 }
-
 
 .name-form{
     padding: 0.7rem;
