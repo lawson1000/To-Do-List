@@ -9,6 +9,11 @@ window.addEventListener("load",() => {
     const username = urlParams.get('username');
     const userholder = document.querySelector("#new_task");
 
+    if (username == null) {
+        alert("Kindly Sign in...");
+        window.location.replace("index.html");
+    }
+
     const finalname =username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
 
     const usernameStore = localStorage.getItem("username") || '';
