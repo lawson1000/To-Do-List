@@ -105,28 +105,25 @@ window.addEventListener("load",() => {
         
     })
 
-    var dictionary = {name:"Lawson", tasks:["task 1", "task 3", "task 3", "task 4"]};
-    var userTasks = dictionary.tasks;
+    // Storage Check
+    loadStorageTasks = () => {
+    
+        userTasks = JSON.parse(localStorage.getItem(`${username}taskStore`)).tasks
+        console.log(userTasks)
 
-    for (var i = 0; i < userTasks.length; i++) {
-        const taskValue = userTasks[i];
-        addTask(taskValue);
+        for (var i = 0; i < userTasks.length; i++) {
+            addTask(userTasks[i]);
+        }
+
+        // localStorage.setItem(`${username}taskStore`, JSON.stringify(dictionary));
+
+    
     }
     
+    // load storage
+
+    loadStorageTasks();
+
 });
 
-
-function loadStorage(username) {
-    
-    var dictionary = {name:"Lawson", tasks:["task 1", "task 3", "task 3", "task 4"]};
-    var userTasks = dictionary[tasks];
-
-    for (vari = 0; i < getList.length; i++) {
-        if (dictionary[i].name == username) {
-            const taskValue = userTasks[i];
-            alert(tasks);
-        
-        }
-    }
-}
 
