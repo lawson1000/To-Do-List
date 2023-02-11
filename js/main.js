@@ -2,43 +2,6 @@ const getList = [];
 
 window.addEventListener("load",() => {
 
-    reload = JSON.parse(localStorage.getItem("reload")) || [];
-
-    const taskForm = document.querySelector("#task-form");
-    const newTask = document.querySelector("#new_task");
-    const listTask = document.querySelector("#tasks");
-    const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username');
-    const userholder = document.querySelector("#new_task");
-
-    if (username == null) {
-        alert("Kindly Sign in...");
-        window.location.replace("index.html");
-    }
-
-    const finalname =username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
-
-    const usernameStore = localStorage.getItem("username") || '';
-    newTask.value =usernameStore;
-
-    userholder.placeholder= "Hi! " + finalname + ", Please Add Your activities! "
-
-
-    taskForm.addEventListener("submit",(e) =>{
-        // prevent it from refreshing the page
-        e.preventDefault();
-        
-        const taskValue = newTask.value;
- 
-        if(!taskValue){
-            alert("Field cannot be empty")
-            return;
-        }
-        newTask.value = "";
-        addTask(taskValue);
-        
-    })
-
     // function to add task
 
     addTask = (taskContent) => {
@@ -101,6 +64,53 @@ window.addEventListener("load",() => {
             listTask.removeChild(task_add);
         })
         
+    }
+
+    // window files
+
+    reload = JSON.parse(localStorage.getItem("reload")) || [];
+
+    const taskForm = document.querySelector("#task-form");
+    const newTask = document.querySelector("#new_task");
+    const listTask = document.querySelector("#tasks");
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+    const userholder = document.querySelector("#new_task");
+
+    if (username == null) {
+        alert("Kindly Sign in...");
+        window.location.replace("index.html");
+    }
+
+    const finalname =username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
+
+    const usernameStore = localStorage.getItem("username") || '';
+    newTask.value =usernameStore;
+
+    userholder.placeholder= "Hi! " + finalname + ", Please Add Your activities! "
+
+
+    taskForm.addEventListener("submit",(e) =>{
+        // prevent it from refreshing the page
+        e.preventDefault();
+        
+        const taskValue = newTask.value;
+ 
+        if(!taskValue){
+            alert("Field cannot be empty")
+            return;
+        }
+        newTask.value = "";
+        addTask(taskValue);
+        
+    })
+
+    var dictionary = {name:"Lawson", tasks:["task 1", "task 3", "task 3", "task 4"]};
+    var userTasks = dictionary.tasks;
+
+    for (var i = 0; i < userTasks.length; i++) {
+        const taskValue = userTasks[i];
+        addTask(taskValue);
     }
     
 });
