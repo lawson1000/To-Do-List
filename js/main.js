@@ -22,10 +22,10 @@ window.addEventListener("load",() => {
 
     var userTasks = localStorage.getItem(`${username}TaskStore`);
     userTasks = userTasks !== "" ? JSON.parse(userTasks) : [];
-    console.log(typeof userTasks)
 
     // global variables 
     var oldValue, newValue;
+
     // function to add task
 
     addTask = (taskContent) => {
@@ -64,6 +64,7 @@ window.addEventListener("load",() => {
         listTask.appendChild(task_add);
         
         task_edit.addEventListener('click',(e) => {
+
             if(task_edit.innerText.toLowerCase() == "edit"){
                 task_input.removeAttribute("readonly");
                 oldValue = task_input.value;
@@ -78,12 +79,12 @@ window.addEventListener("load",() => {
                 task_edit.innerText ="Edit";
                 newValue = task_input.value;
 
-                for (var i = 0; i < userTasks.length; i++) {
-                    var index = userTasks.indexOf(oldValue);
-                    userTasks[index] = newValue;
-                    break;
-                }
-                
+                var index = userTasks.indexOf(oldValue);
+                userTasks[index] = newValue;
+
+                // push task to storage
+                localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+
                 console.log("after: " + userTasks)
             }
         });
@@ -99,6 +100,11 @@ window.addEventListener("load",() => {
         
         task_delete.addEventListener('click',() => {
             listTask.removeChild(task_add);
+            userTasks.splice(userTasks.indexOf(oldValue), 1);
+            
+            // push task to storage
+            localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+
         })
         
     }
