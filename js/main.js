@@ -108,7 +108,7 @@ window.addEventListener("load",() => {
     // Storage Check
     loadStorageTasks = () => {
     
-        userTasks = JSON.parse(localStorage.getItem(`${username}taskStore`)).tasks
+        userTasks = JSON.parse(localStorage.getItem(`${username}TaskStore`))
         console.log(userTasks)
 
         for (var i = 0; i < userTasks.length; i++) {
