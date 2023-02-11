@@ -1,7 +1,31 @@
-const getList = [];
-
 window.addEventListener("load",() => {
 
+    // window files
+
+    reload = JSON.parse(localStorage.getItem("reload")) || [];
+
+    const taskForm = document.querySelector("#task-form");
+    const newTask = document.querySelector("#new_task");
+    const listTask = document.querySelector("#tasks");
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username').toLowerCase();
+    const userholder = document.querySelector("#new_task");
+
+    if (username == null) {
+        alert("Kindly Sign in...");
+        window.location.replace("index.html");
+    }
+
+    const finalname =username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
+
+    userholder.placeholder= "Hi! " + finalname + ", Please Add Your activities! "
+
+    var userTasks = localStorage.getItem(`${username}TaskStore`);
+    userTasks = userTasks !== "" ? JSON.parse(userTasks) : [];
+    console.log(typeof userTasks)
+
+    // global variables 
+    var oldValue, newValue;
     // function to add task
 
     addTask = (taskContent) => {
@@ -39,15 +63,28 @@ window.addEventListener("load",() => {
     
         listTask.appendChild(task_add);
         
-        task_edit.addEventListener('click',() => {
+        task_edit.addEventListener('click',(e) => {
             if(task_edit.innerText.toLowerCase() == "edit"){
                 task_input.removeAttribute("readonly");
+                oldValue = task_input.value;
+                // console.log(task_input.value);
+
                 task_input.focus();
                 task_edit.innerText ="Save";
             }
             else{
+                console.log("before: " + userTasks)
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
+                newValue = task_input.value;
+
+                for (var i = 0; i < userTasks.length; i++) {
+                    var index = userTasks.indexOf(oldValue);
+                    userTasks[index] = newValue;
+                    break;
+                }
+                
+                console.log("after: " + userTasks)
             }
         });
     
@@ -66,29 +103,7 @@ window.addEventListener("load",() => {
         
     }
 
-    // window files
-
-    reload = JSON.parse(localStorage.getItem("reload")) || [];
-
-    const taskForm = document.querySelector("#task-form");
-    const newTask = document.querySelector("#new_task");
-    const listTask = document.querySelector("#tasks");
-    const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username').toLowerCase();
-    const userholder = document.querySelector("#new_task");
-
-    if (username == null) {
-        alert("Kindly Sign in...");
-        window.location.replace("index.html");
-    }
-
-    const finalname =username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
-
-    userholder.placeholder= "Hi! " + finalname + ", Please Add Your activities! "
-
-    var userTasks = localStorage.getItem(`${username}TaskStore`);
-    userTasks = userTasks !== "" ? JSON.parse(userTasks) : [];
-    console.log(typeof userTasks)
+    
 
     taskForm.addEventListener("submit",(e) =>{
         // prevent it from refreshing the page
@@ -128,5 +143,4 @@ window.addEventListener("load",() => {
     loadStorageTasks();
 
 });
-
 
