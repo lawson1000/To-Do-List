@@ -5,7 +5,7 @@ window.addEventListener("load",(e)=>{
 
 
     name_form.addEventListener("submit",(e) =>{
-        const nameValue = name_input.value;
+        const nameValue = name_input.value.toLowerCase();
         let acceptInput = /^[A-Za-z]+$/;
         if(!nameValue){
             alert("Please Enter Your Name")
@@ -24,6 +24,16 @@ window.addEventListener("load",(e)=>{
         }
         else{
             console.log("Welcome")
+
+            // Add to Storage if not exist
+            var name = `${nameValue.toLowerCase()}TaskStore`;
+            var checkStore = localStorage.getItem(name)
+            
+            if (checkStore == null) {
+                localStorage.setItem(name, new Array());
+            }
+
         }
     })
+    
 })
