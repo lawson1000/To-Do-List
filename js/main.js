@@ -83,7 +83,7 @@ window.addEventListener("load",() => {
                 userTasks[index] = newValue;
 
                 // push task to storage
-                sendTasks();
+                localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
 
                 console.log("after: " + userTasks)
             }
@@ -103,7 +103,7 @@ window.addEventListener("load",() => {
             userTasks.splice(userTasks.indexOf(oldValue), 1);
             
             // push task to storage
-            sendTasks();
+            localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
 
         })
         
@@ -129,14 +129,10 @@ window.addEventListener("load",() => {
             userTasks.push(taskValue);
             
             // push task to storage
-            sendTasks();
+            localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
         }
         
     })
-
-    sendTasks = () => {
-        localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
-    }
 
     // Storage Check
     loadStorageTasks = () => {
