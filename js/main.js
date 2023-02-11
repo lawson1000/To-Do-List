@@ -1,3 +1,5 @@
+const getList = [];
+
 window.addEventListener("load",() => {
 
     reload = JSON.parse(localStorage.getItem("reload")) || [];
@@ -32,44 +34,48 @@ window.addEventListener("load",() => {
             alert("Field cannot be empty")
             return;
         }
+        newTask.value = "";
+        addTask(taskValue);
         
+    })
+
+    // function to add task
+
+    addTask = (taskContent) => {
+    
         const task_add = document.createElement("div")
         task_add.classList.add("added-tasks")
-
+    
         const task_content_add = document.createElement("div");
         task_content_add.classList.add("content");
-
-
         task_add.appendChild(task_content_add);
-
+    
         const task_input =document.createElement("textarea")
         task_input.classList.add("text");
         task_input.type = "text";
-        task_input.value = taskValue;
+        task_input.value = taskContent;
         task_input.setAttribute("readonly", "readonly");
-
+    
         task_content_add.appendChild(task_input)
-
+    
         const task_actions=document.createElement("div")
         task_actions.classList.add("action")
-
+    
         const task_edit = document.createElement("button")
         task_edit.classList.add("edit")
         task_edit.innerHTML ="Edit";
-
+    
         const task_delete = document.createElement("button")
         task_delete.classList.add("delete")
         task_delete.innerHTML ="Delete";
         
         task_actions.appendChild(task_edit)
         task_actions.appendChild(task_delete)       
-
+    
         task_add.appendChild(task_actions)
-
+    
         listTask.appendChild(task_add);
         
-        newTask.value = "";
-
         task_edit.addEventListener('click',() => {
             if(task_edit.innerText.toLowerCase() == "edit"){
                 task_input.removeAttribute("readonly");
@@ -81,7 +87,7 @@ window.addEventListener("load",() => {
                 task_edit.innerText ="Edit";
             }
         });
-
+    
         task_input.addEventListener('keypress',(event) =>{
             click = event.key;
             if(click === "Enter"){
@@ -89,11 +95,28 @@ window.addEventListener("load",() => {
                 task_edit.innerText ="Edit";
             }
         });
-
+    
         
         task_delete.addEventListener('click',() => {
             listTask.removeChild(task_add);
         })
         
-    })
-})
+    }
+    
+});
+
+
+function loadStorage(username) {
+    
+    var dictionary = {name:"Lawson", tasks:["task 1", "task 3", "task 3", "task 4"]};
+    var userTasks = dictionary[tasks];
+
+    for (vari = 0; i < getList.length; i++) {
+        if (dictionary[i].name == username) {
+            const taskValue = userTasks[i];
+            alert(tasks);
+        
+        }
+    }
+}
+
