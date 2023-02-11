@@ -74,7 +74,7 @@ window.addEventListener("load",() => {
     const newTask = document.querySelector("#new_task");
     const listTask = document.querySelector("#tasks");
     const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username');
+    const username = urlParams.get('username').toLowerCase();
     const userholder = document.querySelector("#new_task");
 
     if (username == null) {
@@ -86,6 +86,9 @@ window.addEventListener("load",() => {
 
     userholder.placeholder= "Hi! " + finalname + ", Please Add Your activities! "
 
+    var userTasks = localStorage.getItem(`${username}TaskStore`);
+    userTasks = userTasks !== "" ? JSON.parse(userTasks) : [];
+    console.log(typeof userTasks)
 
     taskForm.addEventListener("submit",(e) =>{
         // prevent it from refreshing the page
@@ -96,20 +99,23 @@ window.addEventListener("load",() => {
         if(!taskValue){
             alert("Field cannot be empty")
             return;
+        } else {
+            newTask.value = "";
+            // add task to frame
+            addTask(taskValue);
+            
+            // add task to list
+            userTasks.push(taskValue);
+            
+            // push task to storage
+            localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
         }
-        newTask.value = "";
-        addTask(taskValue);
         
     })
 
     // Storage Check
     loadStorageTasks = () => {
     
-        var userTasks = localStorage.getItem(`${username.toLowerCase()}TaskStore`);
-        userTasks = userTasks !== "" ? JSON.parse(userTasks) : [];
-
-        console.log(userTasks)
-
         for (var i = 0; i < userTasks.length; i++) {
             addTask(userTasks[i]);
         }
@@ -119,7 +125,6 @@ window.addEventListener("load",() => {
     }
     
     // load storage
-
     loadStorageTasks();
 
 });
