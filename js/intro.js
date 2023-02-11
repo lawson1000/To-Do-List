@@ -24,12 +24,16 @@ window.addEventListener("load",(e)=>{
         }
         else{
             console.log("Welcome")
-            var name = `${nameValue}TaskStore`;
+
+            // Add to Storage if not exist
+            var name = `${nameValue.toLowerCase()}TaskStore`;
             var checkStore = localStorage.getItem(name)
-            console.log(checkStore)
+            
             if (checkStore == null) {
-                localStorage.setItem(name, [])
+                localStorage.setItem(name, new Array());
             }
+
         }
     })
+    
 })

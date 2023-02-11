@@ -84,9 +84,6 @@ window.addEventListener("load",() => {
 
     const finalname =username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
 
-    const usernameStore = localStorage.getItem("username") || '';
-    newTask.value =usernameStore;
-
     userholder.placeholder= "Hi! " + finalname + ", Please Add Your activities! "
 
 
@@ -108,7 +105,9 @@ window.addEventListener("load",() => {
     // Storage Check
     loadStorageTasks = () => {
     
-        userTasks = JSON.parse(localStorage.getItem(`${username}TaskStore`))
+        var userTasks = localStorage.getItem(`${username.toLowerCase()}TaskStore`);
+        userTasks = userTasks !== "" ? JSON.parse(userTasks) : [];
+
         console.log(userTasks)
 
         for (var i = 0; i < userTasks.length; i++) {
@@ -117,7 +116,6 @@ window.addEventListener("load",() => {
 
         // localStorage.setItem(`${username}taskStore`, JSON.stringify(dictionary));
 
-    
     }
     
     // load storage
