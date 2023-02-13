@@ -2,8 +2,6 @@ window.addEventListener("load",() => {
 
     // window files
 
-    reload = JSON.parse(localStorage.getItem("reload")) || [];
-
     const taskForm = document.querySelector("#task-form");
     const newTask = document.querySelector("#new_task");
     const listTask = document.querySelector("#tasks");
@@ -22,6 +20,7 @@ window.addEventListener("load",() => {
 
     var userTasks = localStorage.getItem(`${username}TaskStore`);
     userTasks = userTasks !== "" ? JSON.parse(userTasks) : [];
+    // userTasks = new Array(userTasks);
 
     // global variables 
     var oldValue, newValue;
@@ -83,7 +82,7 @@ window.addEventListener("load",() => {
                 userTasks[index] = newValue;
 
                 // push task to storage
-                localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+                pushToStorage();
 
                 console.log("after: " + userTasks)
             }
@@ -100,15 +99,14 @@ window.addEventListener("load",() => {
         
         task_delete.addEventListener('click',() => {
             listTask.removeChild(task_add);
-            userTasks.splice(userTasks.indexOf(oldValue), 1);
+            userTasks.splice(userTasks.indexOf(task_input.value), 1);
             
             // push task to storage
-            localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+            pushToStorage();
 
         })
         
     }
-
     
 
     taskForm.addEventListener("submit",(e) =>{
@@ -122,6 +120,7 @@ window.addEventListener("load",() => {
             return;
         } else {
             newTask.value = "";
+
             // add task to frame
             addTask(taskValue);
             
@@ -129,10 +128,19 @@ window.addEventListener("load",() => {
             userTasks.push(taskValue);
             
             // push task to storage
-            localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+            pushToStorage();
         }
         
     })
+
+    removeDuplicates = () => {
+        userTasks = userTasks.filter((item, index) => userTasks.indexOf(item) === index);
+    }
+
+    pushToStorage = () => {
+        removeDuplicates();
+        localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+    }
 
     // Storage Check
     loadStorageTasks = () => {
