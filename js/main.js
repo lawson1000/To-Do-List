@@ -2,12 +2,9 @@ window.addEventListener("load",() => {
 
     // window files
 
-    reload = JSON.parse(localStorage.getItem("reload")) || [];
-
     const taskForm = document.querySelector("#task-form");
     const newTask = document.querySelector("#new_task");
     const listTask = document.querySelector("#tasks");
-    const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get('username').toLowerCase();
     const userholder = document.querySelector("#new_task");
 
@@ -108,7 +105,6 @@ window.addEventListener("load",() => {
         })
         
     }
-
     
 
     taskForm.addEventListener("submit",(e) =>{
