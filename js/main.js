@@ -120,6 +120,7 @@ window.addEventListener("load",() => {
             return;
         } else {
             newTask.value = "";
+
             // add task to frame
             addTask(taskValue);
             
@@ -131,6 +132,10 @@ window.addEventListener("load",() => {
         }
         
     })
+
+    removeDuplicates = (arr) => {
+        
+    }
 
     pushToStorage = () => {
         localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
