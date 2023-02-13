@@ -99,9 +99,7 @@ window.addEventListener("load",() => {
         
         task_delete.addEventListener('click',(e) => {
             listTask.removeChild(task_add);
-            // console.log(task_input.value)
             userTasks.splice(userTasks.indexOf(task_input.value), 1);
-            console.log("After: " + userTasks)
             
             // push task to storage
             localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
