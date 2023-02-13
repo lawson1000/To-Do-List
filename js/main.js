@@ -82,7 +82,7 @@ window.addEventListener("load",() => {
                 userTasks[index] = newValue;
 
                 // push task to storage
-                localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+                pushToStorage();
 
                 console.log("after: " + userTasks)
             }
@@ -97,12 +97,12 @@ window.addEventListener("load",() => {
         });
     
         
-        task_delete.addEventListener('click',(e) => {
+        task_delete.addEventListener('click',() => {
             listTask.removeChild(task_add);
             userTasks.splice(userTasks.indexOf(task_input.value), 1);
             
             // push task to storage
-            localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+            pushToStorage();
 
         })
         
@@ -127,10 +127,14 @@ window.addEventListener("load",() => {
             userTasks.push(taskValue);
             
             // push task to storage
-            localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+            pushToStorage();
         }
         
     })
+
+    pushToStorage = () => {
+        localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
+    }
 
     // Storage Check
     loadStorageTasks = () => {
