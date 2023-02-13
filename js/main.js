@@ -133,11 +133,12 @@ window.addEventListener("load",() => {
         
     })
 
-    removeDuplicates = (arr) => {
-        
+    removeDuplicates = () => {
+        userTasks = userTasks.filter((item, index) => userTasks.indexOf(item) === index);
     }
 
     pushToStorage = () => {
+        removeDuplicates();
         localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
     }
 
