@@ -5,6 +5,7 @@ window.addEventListener("load",() => {
     const taskForm = document.querySelector("#task-form");
     const newTask = document.querySelector("#new_task");
     const listTask = document.querySelector("#tasks");
+    const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get('username').toLowerCase();
     const userholder = document.querySelector("#new_task");
 
@@ -19,6 +20,7 @@ window.addEventListener("load",() => {
 
     var userTasks = localStorage.getItem(`${username}TaskStore`);
     userTasks = userTasks !== "" ? JSON.parse(userTasks) : [];
+    // userTasks = new Array(userTasks);
 
     // global variables 
     var oldValue, newValue;
@@ -95,9 +97,11 @@ window.addEventListener("load",() => {
         });
     
         
-        task_delete.addEventListener('click',() => {
+        task_delete.addEventListener('click',(e) => {
             listTask.removeChild(task_add);
-            userTasks.splice(userTasks.indexOf(oldValue), 1);
+            // console.log(task_input.value)
+            userTasks.splice(userTasks.indexOf(task_input.value), 1);
+            console.log("After: " + userTasks)
             
             // push task to storage
             localStorage.setItem(`${username}TaskStore`, JSON.stringify(userTasks));
