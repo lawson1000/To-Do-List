@@ -83,20 +83,15 @@ window.addEventListener("load",() => {
                     task_input.setAttribute("readonly","readonly")
                     task_edit.innerText ="Edit";
                     newValue = task_input.value;
-                    // var index = userTasks.indexOf(oldValue);
-                    // userTasks[index] = newValue;
                     editcount = 0;
                     checkForDuplicate()
    
             }
             else{
-
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
                 newValue = task_input.value;
-
                 checkForDuplicate();
-
             }
 
         });
@@ -179,7 +174,8 @@ window.addEventListener("load",() => {
         if(oldValue === newValue){                        
         }
         else if (userTasks.includes(newValue)) { 
-            alert("Task already exists, would be removed...");
+
+            alert("Task already exists, would be removed on page refresh...");
             task_input.innerText = oldValue;
         } else {
             var index = userTasks.indexOf(oldValue);
