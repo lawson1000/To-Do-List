@@ -39,7 +39,7 @@ window.addEventListener("load",() => {
         const task_input =document.createElement("textarea")
         task_input.classList.add("text");
         task_input.type = "text";
-        task_input.value = taskContent;
+        task_input.value = taskContent.trim();
         task_input.setAttribute("readonly", "readonly");
     
         task_content_add.appendChild(task_input)
@@ -68,7 +68,7 @@ window.addEventListener("load",() => {
             
             if(task_edit.innerText.toLowerCase() == "edit" && editcount < 1){
                     task_input.removeAttribute("readonly");
-                    oldValue = task_input.value;
+                    oldValue = task_input.value.trim();
                     // console.log(task_input.value);
                     task_input.focus();
                     task_edit.innerText ="Save";
@@ -82,7 +82,7 @@ window.addEventListener("load",() => {
                     
                     task_input.setAttribute("readonly","readonly")
                     task_edit.innerText ="Edit";
-                    newValue = task_input.value;
+                    newValue = task_input.value.trim();
                     editcount = 0;
                     checkForDuplicate()
    
@@ -90,7 +90,7 @@ window.addEventListener("load",() => {
             else{
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
-                newValue = task_input.value;
+                newValue = task_input.value.trim();
                 checkForDuplicate();
             }
 
@@ -101,7 +101,7 @@ window.addEventListener("load",() => {
             if(click === "Enter"){
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
-                newValue = task_input.value;
+                newValue = task_input.value.trim();
                 editcount = 0;
                 checkForDuplicate()
                 
@@ -111,7 +111,7 @@ window.addEventListener("load",() => {
         
         task_delete.addEventListener('click',() => {
             listTask.removeChild(task_add);
-            userTasks.splice(userTasks.indexOf(task_input.value), 1);
+            userTasks.splice(userTasks.indexOf(task_input.value.trim()), 1);
             
             // push task to storage
             pushToStorage();
@@ -125,7 +125,7 @@ window.addEventListener("load",() => {
         // prevent it from refreshing the page
         e.preventDefault();
         
-        const taskValue = newTask.value;
+        const taskValue = newTask.value.trim();
  
         if(!taskValue){
             alert("Field cannot be empty")
@@ -176,10 +176,10 @@ window.addEventListener("load",() => {
         else if (userTasks.includes(newValue)) { 
 
             alert("Task already exists, would be replaced with old task on page refresh...");
-            task_input.innerText = oldValue;
+            task_input.innerText = oldValue.trim();
         } else {
             var index = userTasks.indexOf(oldValue);
-            userTasks[index] = newValue;
+            userTasks[index] = newValue.trim();
             
             // push task to storage
             pushToStorage();
