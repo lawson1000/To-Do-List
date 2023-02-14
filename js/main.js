@@ -73,19 +73,24 @@ window.addEventListener("load",() => {
                 task_edit.innerText ="Save";
             }
             else{
-                console.log("before: " + userTasks)
+                
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
                 newValue = task_input.value;
 
-                var index = userTasks.indexOf(oldValue);
-                userTasks[index] = newValue;
+                if (userTasks.includes(newValue)) {
+                    alert("Task already exists, would be removed...");
+                    task_input.innerText = oldValue;
+                } else {
+                    var index = userTasks.indexOf(oldValue);
+                    userTasks[index] = newValue;
+                    
+                    // push task to storage
+                    pushToStorage();
+                }
 
-                // push task to storage
-                pushToStorage();
-
-                console.log("after: " + userTasks)
             }
+
         });
     
         task_input.addEventListener('keypress',(event) =>{
@@ -118,6 +123,8 @@ window.addEventListener("load",() => {
         if(!taskValue){
             alert("Field cannot be empty")
             return;
+        } else if (userTasks.includes(taskValue)) {
+            alert("Task already exists");
         } else {
             newTask.value = "";
 
