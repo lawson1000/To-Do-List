@@ -26,7 +26,7 @@ window.addEventListener("load",() => {
     var oldValue, newValue;
 
     // function to add task
-
+    let editcount =0;
     addTask = (taskContent) => {
     
         const task_add = document.createElement("div")
@@ -62,32 +62,40 @@ window.addEventListener("load",() => {
     
         listTask.appendChild(task_add);
         
+
+        
         task_edit.addEventListener('click',(e) => {
-
-            if(task_edit.innerText.toLowerCase() == "edit"){
-                task_input.removeAttribute("readonly");
-                oldValue = task_input.value;
-                // console.log(task_input.value);
-
-                task_input.focus();
-                task_edit.innerText ="Save";
+            
+            if(task_edit.innerText.toLowerCase() == "edit" && editcount < 1){
+                    task_input.removeAttribute("readonly");
+                    oldValue = task_input.value;
+                    // console.log(task_input.value);
+                    task_input.focus();
+                    task_edit.innerText ="Save";
+                    editcount++
+                
+            }
+            else if(task_edit.innerText.toLowerCase() == "edit" && editcount > 0){
+                        alert("Can't Edit more than 1 task at the same time...");
+            }
+            else if (task_edit.innerText.toLowerCase() == "save" && editcount > 0){
+                    
+                    task_input.setAttribute("readonly","readonly")
+                    task_edit.innerText ="Edit";
+                    newValue = task_input.value;
+                    // var index = userTasks.indexOf(oldValue);
+                    // userTasks[index] = newValue;
+                    editcount = 0;
+                    checkForDuplicate()
+   
             }
             else{
-                
+
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
                 newValue = task_input.value;
 
-                if (userTasks.includes(newValue)) {
-                    alert("Task already exists, would be removed...");
-                    task_input.innerText = oldValue;
-                } else {
-                    var index = userTasks.indexOf(oldValue);
-                    userTasks[index] = newValue;
-                    
-                    // push task to storage
-                    pushToStorage();
-                }
+                checkForDuplicate();
 
             }
 
@@ -98,6 +106,7 @@ window.addEventListener("load",() => {
             if(click === "Enter"){
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
+                
             }
         });
     
@@ -162,6 +171,22 @@ window.addEventListener("load",() => {
     
     // load storage
     loadStorageTasks();
+
+    checkForDuplicate = () => {
+        if(oldValue === newValue){                        
+        }
+        else if (userTasks.includes(newValue)) { 
+            alert("Task already exists, would be removed...");
+            task_input.innerText = oldValue;
+        } else {
+            var index = userTasks.indexOf(oldValue);
+            userTasks[index] = newValue;
+            
+            // push task to storage
+            pushToStorage();
+        }
+    }
+    
 
 });
 
