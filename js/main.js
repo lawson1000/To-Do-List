@@ -78,8 +78,9 @@ window.addEventListener("load",() => {
                 task_edit.innerText ="Edit";
                 newValue = task_input.value;
 
-                if (userTasks.includes(taskValue)) {
-                    alert("Task already exists");
+                if (userTasks.includes(newValue)) {
+                    alert("Task already exists, would be removed...");
+                    task_input.innerText = oldValue;
                 } else {
                     var index = userTasks.indexOf(oldValue);
                     userTasks[index] = newValue;
