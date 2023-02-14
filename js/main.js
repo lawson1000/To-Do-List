@@ -73,7 +73,7 @@ window.addEventListener("load",() => {
                 task_edit.innerText ="Save";
             }
             else{
-                console.log("before: " + userTasks)
+                
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
                 newValue = task_input.value;
@@ -83,8 +83,6 @@ window.addEventListener("load",() => {
 
                 // push task to storage
                 pushToStorage();
-
-                console.log("after: " + userTasks)
             }
         });
     
@@ -118,6 +116,8 @@ window.addEventListener("load",() => {
         if(!taskValue){
             alert("Field cannot be empty")
             return;
+        } else if (userTasks.includes(taskValue)) {
+            alert("Task already exists");
         } else {
             newTask.value = "";
 
