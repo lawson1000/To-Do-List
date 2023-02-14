@@ -175,7 +175,7 @@ window.addEventListener("load",() => {
         }
         else if (userTasks.includes(newValue)) { 
 
-            alert("Task already exists, would be removed on page refresh...");
+            alert("Task already exists, would be replaced with old task on page refresh...");
             task_input.innerText = oldValue;
         } else {
             var index = userTasks.indexOf(oldValue);
