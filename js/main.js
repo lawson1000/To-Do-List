@@ -106,6 +106,9 @@ window.addEventListener("load",() => {
             if(click === "Enter"){
                 task_input.setAttribute("readonly","readonly")
                 task_edit.innerText ="Edit";
+                newValue = task_input.value;
+                editcount = 0;
+                checkForDuplicate()
                 
             }
         });
