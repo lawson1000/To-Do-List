@@ -78,12 +78,18 @@ window.addEventListener("load",() => {
                 task_edit.innerText ="Edit";
                 newValue = task_input.value;
 
-                var index = userTasks.indexOf(oldValue);
-                userTasks[index] = newValue;
+                if (userTasks.includes(taskValue)) {
+                    alert("Task already exists");
+                } else {
+                    var index = userTasks.indexOf(oldValue);
+                    userTasks[index] = newValue;
+                    
+                    // push task to storage
+                    pushToStorage();
+                }
 
-                // push task to storage
-                pushToStorage();
             }
+
         });
     
         task_input.addEventListener('keypress',(event) =>{
